@@ -1,0 +1,81 @@
+:root{
+    height: 100vh;
+    max-width: 100vw;
+    font-family: 'Fira Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/*--------------------
+CSS Vars - colors and sizes
+--------------------*/
+:root{
+    --stone:#e1e1e1;
+    --mint:#4ade80;
+    --white-bg:#f5f5f5;
+    --forest-green:#14532d;
+    --gas:#fde047;
+    --black-bg: #262626;
+}
+
+
+
+/*-------------------
+Header styling
+-------------------*/
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header>figure>.svg{
+    height: 5rem;
+}
+
+
+header>h1{
+    font-size: 4.2rem;
+    font-weight: 500;
+}
+
+/*-------------------
+main styling
+-------------------*/
+
+section.book-addition>button{
+    font-size: 1.5rem;
+    border-radius: 8px;
+}
+
+main>section.book-addition{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 0;
+}
+
+main{
+    background-color: var(--stone);
+    flex-grow: 1;
+}
+
+.card{
+    width:80%;
+    height: 25rem;
+    background-color: var(--white-bg);
+}
+
+section.grid-container{
+    display: grid;
+    justify-items: center;
+    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
+}
