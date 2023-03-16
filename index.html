@@ -19,7 +19,23 @@
     </header>
     <main>
         <section class="book-addition">            
-            <button class="add-book-btn">Add a book!</button>
+            <button class="add-book-btn" id="modal-btn">Add a book!</button>
+            <div class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <form action="#" method="post">
+                        <label for="book-title">Book title:</label>
+                        <input type="text" name="book-tilte" id="book-title" required>
+                        <label for="author">Author:</label>
+                        <input type="text" name="author" id="author" required>
+                        <label for="pages">Pages:</label>
+                        <input type="number" name="pages" id="pages" required>
+                        <label for="read">Mark read:</label>
+                        <input type="checkbox" name="read" id="read">
+                        <input type="submit" value="Add my book">
+                    </form>
+                </div>
+            </div>
         </section>
         <section class="grid-container cards">
             <div class="card">card a</div>
