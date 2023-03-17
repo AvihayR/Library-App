@@ -18,6 +18,10 @@ window.addEventListener('click', () => {
   }
 });
 
+//
+
+let library = [];
+
 function createBook(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -29,8 +33,9 @@ createBook.prototype.info = function () {
   return `${this.title}, ${this.author}, ${this.pages}, ${this.read}`;
 };
 
-//const avici = new createBook('avic', 'mastul', 128, 'read');
-//console.log(avici.info());
+function addBookToLibrary(title, author, pages, read) {
+  let newObj = new createBook(title, author, pages, read);
+  return library.push(newObj);
+}
 
-let library = [];
-function addBookToLibrary() {}
+console.log(library);
