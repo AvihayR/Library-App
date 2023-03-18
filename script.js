@@ -45,22 +45,37 @@ function addBookToLibrary(title, author, pages, read) {
   return library.push(newObj);
 }
 
-//Iterate on the library array and display each book:
+//Iterate on the library array and render each book as a card:
 function displayBooks() {
+  //iterate over the array
   library.map((item) => {
     let elementItem = document.createElement('div');
+    let index = library.indexOf(item);
+    let allCards = document.querySelectorAll('.card');
+    if (
+      //find duplicates
+      Array.from(allCards).some((c) => {
+        return c.classList.contains(index);
+      })
+    ) {
+      return;
+    } else {
+      //for each library array item, which has a card, create inner elements:
+      item.info().map((value) => {
+        let innerCardElement = document.createElement('p');
+        innerCardElement.classList.add('card-value');
+        innerCardElement.innerHTML = value;
+        elementItem.appendChild(innerCardElement);
+      });
+      gridContainer.appendChild(elementItem);
+    }
     elementItem.classList.add('card');
-    item.info().map((value) => {
-      let innerCardElement = document.createElement('p');
-      innerCardElement.classList.add('card-value');
-      innerCardElement.innerHTML = value;
-      elementItem.appendChild(innerCardElement);
-    });
-    gridContainer.appendChild(elementItem);
+    //card num corelate to library array index of the object.
+    elementItem.classList.add(index);
   });
 }
 
-//Render values of form input fields without "Submitting" the form
+//Render values of form input fields on click:
 submitBtn.addEventListener('click', (event) => {
   event.preventDefault();
   formInputs = Array.from(formInputs).filter((v) => {
