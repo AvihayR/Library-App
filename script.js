@@ -47,20 +47,24 @@ function addBookToLibrary(title, author, pages, read) {
 
 //Iterate on the library array and render each book as a card:
 function displayBooks() {
-  //iterate over the array
   library.map((item) => {
-    let elementItem = document.createElement('div');
+    const elementItem = document.createElement('div');
     let index = library.indexOf(item);
     let allCards = document.querySelectorAll('.card');
+    //
+    let xBtn = document.createElement('span');
+    xBtn.classList.add('close', 'remove-card');
+    xBtn.innerHTML = '&times;';
+    elementItem.appendChild(xBtn);
+    //Validate non-dupes:
     if (
-      //find duplicates
       Array.from(allCards).some((c) => {
         return c.classList.contains(index);
       })
     ) {
       return;
     } else {
-      //for each library array item, which has a card, create inner elements:
+      //Create elements for inner card:
       item.info().map((value) => {
         let innerCardElement = document.createElement('p');
         innerCardElement.classList.add('card-value');
@@ -70,8 +74,15 @@ function displayBooks() {
       gridContainer.appendChild(elementItem);
     }
     elementItem.classList.add('card');
-    //card num corelate to library array index of the object.
     elementItem.classList.add(index);
+    elementItem.dataset.number = index;
+
+    xBtn = document.querySelectorAll('.remove-card');
+    xBtn.forEach((btn) => {
+      btn.addEventListener('click', removeCard);
+    });
+
+    clearInputValues();
   });
 }
 
@@ -91,3 +102,29 @@ submitBtn.addEventListener('click', (event) => {
   addBookToLibrary(...formInputValues);
   displayBooks();
 });
+
+//clear all input values when adding a new book:
+function clearInputValues() {
+  formInputs.map((i) => {
+    i.value = '';
+  });
+  closeBtn.click();
+}
+
+//remove card/obj from Array+UI:
+function removeCard() {
+  const selectedCardNumber = this.parentElement.dataset.number;
+  //remove chosen object from library array:
+  library = library.filter((e) => {
+    return library.indexOf(e) !== parseInt(selectedCardNumber);
+  });
+  //remove card from UI:
+  gridContainer.removeChild(this.parentElement);
+}
+
+//
+
+/*
+
+
+*/
