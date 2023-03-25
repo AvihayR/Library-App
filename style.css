@@ -69,12 +69,6 @@ main{
     padding: 3vh 5vw;
 }
 
-.card{
-    width:80%;
-    height: 20rem;
-    background-color: var(--white-bg);
-}
-
 section.grid-container{
     display: grid;
     justify-items: center;
@@ -146,8 +140,37 @@ input{
 /*--------------
 Cards styling
 --------------*/
+
+
+.card{
+    width:min(20rem,65%);
+    height: 20rem;
+    background-color: var(--white-bg);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+}
+
+.card>button.read-btn{
+    position:absolute;
+    top:90%;
+    left: auto;
+}
+
+.card>span.close{
+    position: absolute;
+    top: 0;
+    right: 2px;
+}
+
+/*Card-values*/
+.card-value{
+    margin-top: 15%;
+}
 .card-value::before{
-    font-weight: 450;
+    font-weight: 650;
 }
 .card-value:nth-child(3)::before{
     content: 'Book title: ';
@@ -166,6 +189,7 @@ Cards styling
     display: none;
 }
 .card.read:after{
+    margin-top: 15%;
     content: '✓ You read this book!';
 }
 
