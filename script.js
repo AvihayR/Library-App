@@ -39,6 +39,15 @@ createBook.prototype.info = function () {
   return [this.title, this.author, this.pages, this.read];
 };
 
+createBook.prototype.read = function () {
+  let dataSetNumber = this.parentElement.dataset.number;
+  let thisCard = this.parentElement;
+  //Change value of object key 'read':
+  library[dataSetNumber].read = library[dataSetNumber].read ? false : true;
+  //toggle css class 'read':
+  this.parentElement.classList.toggle('read');
+};
+
 //Function to add objects into an array using the obj constructor:
 function addBookToLibrary(title, author, pages, read) {
   let newObj = new createBook(title, author, pages, read);
@@ -48,14 +57,21 @@ function addBookToLibrary(title, author, pages, read) {
 //Iterate on the library array and render each book as a card:
 function displayBooks() {
   library.map((item) => {
-    const elementItem = document.createElement('div');
+    const card = document.createElement('div');
     let index = library.indexOf(item);
     let allCards = document.querySelectorAll('.card');
-    //
+
+    //close & read buttons:
     let xBtn = document.createElement('span');
     xBtn.classList.add('close', 'remove-card');
     xBtn.innerHTML = '&times;';
-    elementItem.appendChild(xBtn);
+    card.appendChild(xBtn);
+
+    let readBtn = document.createElement('button');
+    readBtn.classList.add('read-btn');
+    readBtn.innerHTML = 'Read';
+    card.appendChild(readBtn);
+
     //Validate non-dupes:
     if (
       Array.from(allCards).some((c) => {
@@ -68,18 +84,27 @@ function displayBooks() {
       item.info().map((value) => {
         let innerCardElement = document.createElement('p');
         innerCardElement.classList.add('card-value');
+        innerCardElement.dataset.cardValue = item.info().indexOf(value);
         innerCardElement.innerHTML = value;
-        elementItem.appendChild(innerCardElement);
+        card.appendChild(innerCardElement);
       });
-      gridContainer.appendChild(elementItem);
+      if (item.read == true) {
+        card.classList.add('read');
+      }
+      gridContainer.appendChild(card);
     }
-    elementItem.classList.add('card');
-    elementItem.classList.add(index);
-    elementItem.dataset.number = index;
+    card.classList.add('card');
+    card.classList.add(index);
+    card.dataset.number = index;
 
     xBtn = document.querySelectorAll('.remove-card');
     xBtn.forEach((btn) => {
       btn.addEventListener('click', removeCard);
+    });
+
+    readBtn = document.querySelectorAll('.read-btn');
+    readBtn.forEach((btn) => {
+      btn.addEventListener('click', createBook.prototype.read);
     });
 
     clearInputValues();
@@ -121,10 +146,3 @@ function removeCard() {
   //remove card from UI:
   gridContainer.removeChild(this.parentElement);
 }
-
-//
-
-/*
-
-
-*/

@@ -141,3 +141,16 @@ input{
     text-decoration: none;
     cursor: pointer;
   }
+
+
+/*--------------
+Cards styling
+--------------*/
+/*
+.card.read>[data-card-value="3"]{
+    display: none;
+}
+.card.read>[data-card-value="3"]:before{
+    content: 'is read';
+}
+*/
