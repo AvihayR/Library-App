@@ -22,8 +22,6 @@ window.addEventListener('click', () => {
   }
 });
 
-//
-
 let library = [];
 
 //Object constructor:
@@ -41,11 +39,16 @@ createBook.prototype.info = function () {
 
 createBook.prototype.read = function () {
   let dataSetNumber = this.parentElement.dataset.number;
-  let thisCard = this.parentElement;
   //Change value of object key 'read':
   library[dataSetNumber].read = library[dataSetNumber].read ? false : true;
   //toggle css class 'read':
   this.parentElement.classList.toggle('read');
+  //change button text on clicking:
+  if (library[dataSetNumber].read == true) {
+    this.innerHTML = 'Unread';
+  } else {
+    this.innerHTML = 'Read';
+  }
 };
 
 //Function to add objects into an array using the obj constructor:
@@ -90,6 +93,7 @@ function displayBooks() {
       });
       if (item.read == true) {
         card.classList.add('read');
+        card.querySelector('.read-btn').textContent = 'Unread';
       }
       gridContainer.appendChild(card);
     }
