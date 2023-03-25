@@ -146,11 +146,26 @@ input{
 /*--------------
 Cards styling
 --------------*/
-/*
-.card.read>[data-card-value="3"]{
+.card-value::before{
+    font-weight: 450;
+}
+.card-value:nth-child(3)::before{
+    content: 'Book title: ';
+}
+
+.card-value:nth-child(4)::before{
+    content: 'Author: ';
+}
+
+.card-value:nth-child(5)::before{
+    content: 'Pages: ';
+}
+
+/*Card-is-read*/
+.card>[data-card-value="3"]{
     display: none;
 }
-.card.read>[data-card-value="3"]:before{
-    content: 'is read';
+.card.read:after{
+    content: '✓ You read this book!';
 }
-*/
+
