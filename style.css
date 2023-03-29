@@ -228,3 +228,23 @@ Cards styling
     content: "✓ You have read this book!";
 }
 
+/*-------------------
+Footer
+-------------------*/
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+}
+footer>p{
+    letter-spacing: 2px;
+    font-size: max(1.2rem,1.1vw);
+    font-weight: 500;
+    color: var(--graphite);
+}
+footer>p>a{
+    color: var(--gas);
+    font-weight: 800;
+}
+
