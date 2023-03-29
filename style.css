@@ -53,8 +53,11 @@ header>h1{
 main styling
 -------------------*/
 
-button.add-book-btn{
+button{
     font-size: 2rem;
+}
+
+button , #submit-btn{
     font-weight: 600;
     border: 3px solid var(--gas);
     border-radius: 10px;
@@ -64,7 +67,9 @@ button.add-book-btn{
     transition: 450ms;
 }
 
-button.add-book-btn:hover{
+
+
+button:hover , #submit-btn:hover{
     background-color: var(--white-bg);
     color: var(--gas);
     transform: translate(2px, 2px);
@@ -133,11 +138,14 @@ Modal Styling:
     margin: 7px 0;
 }
 
-
+form>label , #submit-btn{
+    font-weight: 500;
+    letter-spacing: 2px;
+}
 
 input{
-    max-width: 70%;
-    font-size: min(1.5rem,3vw);
+    max-width: 90%;
+    font-size: min(1.5rem,5vw);
 }
 
 
@@ -173,9 +181,18 @@ Cards styling
 
 }
 
+.card>p{
+    font-size: 1.2rem;
+}
+
+.card>button{
+    font-size: 1.3rem;
+    border-radius: 8px;
+}
+
 
 .card>button.read-btn{
-    margin-top: 15%;
+    margin-top: 7%;
 }
 
 .card>span.close{
