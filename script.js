@@ -70,11 +70,6 @@ function displayBooks() {
     xBtn.innerHTML = '&times;';
     card.appendChild(xBtn);
 
-    let readBtn = document.createElement('button');
-    readBtn.classList.add('read-btn');
-    readBtn.innerHTML = 'Read';
-    card.appendChild(readBtn);
-
     //Validate non-dupes:
     if (
       Array.from(allCards).some((c) => {
@@ -91,6 +86,12 @@ function displayBooks() {
         innerCardElement.innerHTML = value;
         card.appendChild(innerCardElement);
       });
+
+      let readBtn = document.createElement('button');
+      readBtn.classList.add('read-btn');
+      readBtn.innerHTML = 'Read';
+      card.appendChild(readBtn);
+
       if (item.read == true) {
         card.classList.add('read');
         card.querySelector('.read-btn').textContent = 'Unread';
@@ -141,12 +142,15 @@ function clearInputValues() {
 }
 
 //remove card/obj from Array+UI:
+//remove chosen object from library array:
 function removeCard() {
-  const selectedCardNumber = this.parentElement.dataset.number;
-  //remove chosen object from library array:
-  library = library.filter((e) => {
-    return library.indexOf(e) !== parseInt(selectedCardNumber);
+  const titleOfChosenBook = this.parentElement.querySelector(
+    "[data-card-value='0']"
+  ).innerHTML;
+  library = library.filter((obj) => {
+    return obj.title !== titleOfChosenBook;
   });
+
   //remove card from UI:
   gridContainer.removeChild(this.parentElement);
 }

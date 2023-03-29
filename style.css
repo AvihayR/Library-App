@@ -141,46 +141,42 @@ input{
 Cards styling
 --------------*/
 
-
 .card{
-    width:min(20rem,65%);
-    height: 20rem;
+    width:min(18rem,62%);
+    height: 19rem;
     background-color: var(--white-bg);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-    position: relative;
     align-items: center;
 }
 
+
 .card>button.read-btn{
-    position:absolute;
-    top:90%;
-    left: auto;
+    margin-top: 15%;
 }
 
 .card>span.close{
-    position: absolute;
-    top: 0;
-    right: 2px;
+    margin-left: auto;
+    padding-right: 3px;
 }
 
 /*Card-values*/
 .card-value{
-    margin-top: 15%;
+    margin-top: 10%;
 }
 .card-value::before{
     font-weight: 650;
 }
-.card-value:nth-child(3)::before{
+.card-value:nth-child(2)::before{
     content: 'Book title: ';
 }
 
-.card-value:nth-child(4)::before{
+.card-value:nth-child(3)::before{
     content: 'Author: ';
 }
 
-.card-value:nth-child(5)::before{
+.card-value:nth-child(4)::before{
     content: 'Pages: ';
 }
 
@@ -190,6 +186,6 @@ Cards styling
 }
 .card.read:after{
     margin-top: 15%;
-    content: '✓ You read this book!';
+    content: "✓ You have read this book!";
 }
 
