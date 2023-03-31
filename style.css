@@ -19,8 +19,8 @@ CSS Vars - colors and sizes
     --stone:#e1e1e1;
     --mint:#4ade80;
     --white-bg:#f5f5f5;
-    --forest-green:#14532d;
-    --gas:#fde047;
+    --forest-green:#196d3b;
+    --graphite-stone:#7f7e78;
     --gas:#fde047;
     --black-bg: #262626;
     --graphite: #a6a6a6;
@@ -178,7 +178,8 @@ Cards styling
     align-items: center;
     background-color: var(--white-bg);
     box-shadow: 5px 5px 35px var(--graphite);
-
+    border-left: 10px solid var(--graphite-stone);
+    transition: 250ms;
 }
 
 .card>p{
@@ -198,6 +199,10 @@ Cards styling
 .card>span.close{
     margin-left: auto;
     padding-right: 3px;
+}
+
+.card.read{
+    border-left: 10px solid var(--forest-green);
 }
 
 /*Card-values*/
