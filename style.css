@@ -235,7 +235,11 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 2rem;
+    height: 2.5rem;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: var(--gas);
 }
 footer>p{
     letter-spacing: 2px;
@@ -244,7 +248,7 @@ footer>p{
     color: var(--graphite);
 }
 footer>p>a{
-    color: var(--gas);
+    color: var(--white-bg);
     font-weight: 800;
 }
 
