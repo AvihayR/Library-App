@@ -20,7 +20,7 @@ CSS Vars - colors and sizes
     --mint:#4ade80;
     --white-bg:#f5f5f5;
     --forest-green:#196d3b;
-    --graphite-stone:#7f7e78;
+    --graphite-stone:#81807b;
     --gas:#fde047;
     --black-bg: #262626;
     --graphite: #a6a6a6;
@@ -248,12 +248,19 @@ footer{
 }
 footer>p{
     letter-spacing: 2px;
-    font-size: max(1.2rem,1.1vw);
+    font-size: max(1rem,1.1vw);
     font-weight: 500;
     color: var(--graphite);
 }
 footer>p>a{
     color: var(--white-bg);
     font-weight: 800;
+    transition: 150ms;
 }
+
+footer>p>a:hover{
+    font-weight: 1000;
+    text-decoration: wavy;
+}
+
 
