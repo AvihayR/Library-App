@@ -170,8 +170,8 @@ Cards styling
 --------------*/
 
 .card{
-    width:min(18rem,62%);
-    height: 19rem;
+    width:min(20rem,80%);
+    height: 22rem;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
