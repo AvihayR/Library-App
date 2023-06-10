@@ -88,11 +88,10 @@ function addBookToLibrary(title, author, pages, read) {
 
 //Iterate on the library array and render each book as a card:
 function displayBooks() {
-  library = library.filter((book) => {
-    return book !== null;
-  });
-
   library.map((item) => {
+    if (item === null) {
+      return;
+    }
     const card = document.createElement('div');
     let index = library.indexOf(item);
     let allCards = document.querySelectorAll('.card');
