@@ -88,6 +88,10 @@ function addBookToLibrary(title, author, pages, read) {
 
 //Iterate on the library array and render each book as a card:
 function displayBooks() {
+  library = library.filter((book) => {
+    return book !== null;
+  });
+
   library.map((item) => {
     const card = document.createElement('div');
     let index = library.indexOf(item);
@@ -173,12 +177,17 @@ function clearInputValues() {
 //remove card/obj from Array+UI:
 //remove chosen object from library array:
 function removeCard() {
-  const titleOfChosenBook = this.parentElement.querySelector(
-    "[data-card-value='0']"
-  ).innerHTML;
-  library = library.filter((obj) => {
-    return obj.title !== titleOfChosenBook;
-  });
+  //This way i can remove the card, but keep functionality:
+  let cardNumberInLibraryArray = this.parentElement.dataset.number;
+  library[cardNumberInLibraryArray] = null;
+
+  //Old way to remove card logically:
+  // const titleOfChosenBook = this.parentElement.querySelector(
+  //   "[data-card-value='0']"
+  // ).innerHTML;
+  // library = library.filter((obj) => {
+  //   return obj.title !== titleOfChosenBook;
+  // });
 
   //remove card from UI:
   gridContainer.removeChild(this.parentElement);
