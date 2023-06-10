@@ -24,36 +24,65 @@ window.addEventListener('click', () => {
 
 let library = [];
 
-//Object constructor:
-function createBook(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+//Class creation:
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+  info() {
+    return [this.title, this.author, this.pages, this.read];
+  }
+
+  read() {
+    let dataSetNumber = this.parentElement.dataset.number;
+    //Change value of object key 'read':
+    library[dataSetNumber].read = library[dataSetNumber].read ? false : true;
+    //toggle css class 'read':
+    this.parentElement.classList.toggle('read');
+    //change button text on clicking:
+    if (library[dataSetNumber].read == true) {
+      this.innerHTML = 'Unread';
+    } else {
+      this.innerHTML = 'Read';
+    }
+  }
 }
 
-//Object prototype for inheritance:
-createBook.prototype.info = function () {
-  return [this.title, this.author, this.pages, this.read];
-};
+//Old code - Same functionality:
 
-createBook.prototype.read = function () {
-  let dataSetNumber = this.parentElement.dataset.number;
-  //Change value of object key 'read':
-  library[dataSetNumber].read = library[dataSetNumber].read ? false : true;
-  //toggle css class 'read':
-  this.parentElement.classList.toggle('read');
-  //change button text on clicking:
-  if (library[dataSetNumber].read == true) {
-    this.innerHTML = 'Unread';
-  } else {
-    this.innerHTML = 'Read';
-  }
-};
+//Object constructor:
+// function createBook(title, author, pages, read) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = read;
+// }
+
+//Object prototype for methods inheritance:
+// createBook.prototype.info = function () {
+//   return [this.title, this.author, this.pages, this.read];
+// };
+
+// createBook.prototype.read = function () {
+//   let dataSetNumber = this.parentElement.dataset.number;
+//   //Change value of object key 'read':
+//   library[dataSetNumber].read = library[dataSetNumber].read ? false : true;
+//   //toggle css class 'read':
+//   this.parentElement.classList.toggle('read');
+//   //change button text on clicking:
+//   if (library[dataSetNumber].read == true) {
+//     this.innerHTML = 'Unread';
+//   } else {
+//     this.innerHTML = 'Read';
+//   }
+// };
 
 //Function to add objects into an array using the obj constructor:
 function addBookToLibrary(title, author, pages, read) {
-  let newObj = new createBook(title, author, pages, read);
+  let newObj = new Book(title, author, pages, read);
   return library.push(newObj);
 }
 
@@ -109,7 +138,7 @@ function displayBooks() {
 
     readBtn = document.querySelectorAll('.read-btn');
     readBtn.forEach((btn) => {
-      btn.addEventListener('click', createBook.prototype.read);
+      btn.addEventListener('click', Book.prototype.read);
     });
 
     clearInputValues();
